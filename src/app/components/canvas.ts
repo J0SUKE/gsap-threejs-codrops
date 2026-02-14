@@ -20,7 +20,6 @@ export default class Canvas {
     this.createCamera()
     this.createRenderer()
     this.setSizes()
-    this.addEventListeners()
   }
 
   createScene() {
@@ -66,13 +65,7 @@ export default class Canvas {
     }
   }
 
-  addEventListeners() {
-    window.addEventListener("resize", this.onResize.bind(this))
-  }
-
   onResize() {
-    ScrollTrigger.refresh()
-
     this.dimensions = {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -86,6 +79,7 @@ export default class Canvas {
     this.renderer.setPixelRatio(this.dimensions.pixelRatio)
     this.renderer.setSize(this.dimensions.width, this.dimensions.height)
 
+    //ScrollTrigger.refresh()
     this.medias?.forEach((media) => {
       media?.onResize(this.sizes)
     })

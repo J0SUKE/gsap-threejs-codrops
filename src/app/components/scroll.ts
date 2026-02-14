@@ -19,9 +19,6 @@ export default class Scroll {
       normalizeScroll: true,
       wrapper: document.getElementById("app") as HTMLElement,
       content: document.getElementById("smooth-content") as HTMLElement,
-      onUpdate: (self) => {
-        this.scroll = self.scrollTop()
-      },
     })
 
     ScrollTrigger.refresh()
@@ -38,6 +35,8 @@ export default class Scroll {
   }
 
   getScroll() {
+    this.scroll = this.s?.scrollTop() || 0
+
     return this.scroll
   }
 }
